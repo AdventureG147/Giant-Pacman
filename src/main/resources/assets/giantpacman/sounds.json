@@ -1,0 +1,20 @@
+{
+  "pacman_sound": {
+    "subtitle": "giantpacman.pacman_sound",
+    "sounds": [
+      "giantpacman:pacman_sound"
+    ]
+  },
+  "pacman_hurt": {
+    "subtitle": "giantpacman.pacman_hurt",
+    "sounds": [
+      "giantpacman:pacman_hurt"
+    ]
+  },
+  "pacman_death": {
+    "subtitle": "giantpacman.pacman_death",
+    "sounds": [
+      "giantpacman:pacman_death"
+    ]
+  }
+}

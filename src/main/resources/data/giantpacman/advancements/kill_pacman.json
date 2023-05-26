@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_trophy"
+    },
+    "title": "Game Over.",
+    "description": "Defeat Pacman. Be Careful, He Bites.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "giantpacman:giantpacman_mod",
+  "criteria": {
+    "Pacman Trophy": {
+      "trigger": "minecraft:impossible"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_spawn_egg"
+    },
+    "title": "The Big Man Himself.",
+    "description": "Come Across a Sleeping Pacman ",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "giantpacman:giantpacman_mod",
+  "criteria": {
+    "Pacman Trophy": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_spawn_egg"
+    },
+    "title": "Giant Pacman",
+    "description": "The Giant Pacman Mod",
+    "background": "giantpacman:textures/item/pacman_spawn_egg.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "Giant Pacman": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  }
+}

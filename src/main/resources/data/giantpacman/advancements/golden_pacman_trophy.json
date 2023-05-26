@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:golden_pacman_trophy"
+    },
+    "title": "A Golden Trophy!",
+    "description": "Obtain the Golden Pacman Trophy",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "giantpacman:pacman_trophy",
+  "criteria": {
+    "Pacman Trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "giantpacman:golden_pacman_trophy"
+          }
+        ]
+      }
+    }
+  }
+}

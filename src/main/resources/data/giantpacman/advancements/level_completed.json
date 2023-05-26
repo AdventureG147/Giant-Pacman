@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:golden_pacman_trophy"
+    },
+    "title": "Level 255 Completed.",
+    "description": "Kill Pacman 255 Times. You are a True Gamer.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "giantpacman:pacman_trophy",
+  "criteria": {
+    "Pacman Trophy": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

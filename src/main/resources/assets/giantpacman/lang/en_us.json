@@ -1,0 +1,14 @@
+{
+	"itemGroup.giantpacman.item_group": "Giant Pacman Mod",
+
+	"item.giantpacman.pacman_spawn_egg": "Pacman Spawn Egg",
+
+	"entity.giantpacman.giant_pacman": "Giant Pacman",
+
+	"block.giantpacman.pacman_trophy": "Pacman Trophy",
+	"block.giantpacman.golden_pacman_trophy": "Golden Pacman Trophy",
+
+	"subtitles.giantpacman.entity.giant_pacman.living": "Giant Pacman chomps",
+	"subtitles.giantpacman.entity.giant_pacman.death": "Giant Pacman dies",
+	"subtitles.giantpacman.entity.giant_pacman.hurt": "Giant Pacman hurts"
+}

@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_trophy"
+    },
+    "title": "Frenimies",
+    "description": "Ride a Pacman to it's Death.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "giantpacman:sleeping_pacman",
+  "criteria": {
+    "Pacman Trophy": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

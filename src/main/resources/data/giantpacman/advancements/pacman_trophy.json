@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_trophy"
+    },
+    "title": "A Trophy!",
+    "description": "Obtain the Pacman Trophy",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "giantpacman:kill_pacman",
+  "criteria": {
+    "Pacman Trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "giantpacman:pacman_trophy"
+          }
+        ]
+      }
+    }
+  }
+}
