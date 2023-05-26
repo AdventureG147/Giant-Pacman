@@ -7,15 +7,22 @@ import net.adventureg147.giantpacman.common.registry.GPEntityTypes;
 import net.adventureg147.giantpacman.common.registry.GPItems;
 import net.adventureg147.giantpacman.common.registry.GPSoundEvents;
 import net.adventureg147.giantpacman.common.worldgen.BiomeLoadEventSubscriber;
+import net.adventureg147.giantpacman.data.GPTagProvider;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import net.minecraftforge.forgespi.language.IModInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,7 +37,7 @@ public class GiantPacman {
 	public static final String MODID = "giantpacman";
 	public static final String MODNAME = "Giant Pacman";
 	public static ArtifactVersion VERSION = null;
-	private static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger LOGGER = LogManager.getLogger();
 
 	public GiantPacman() {
 		GeckoLibMod.DISABLE_IN_DEV = true;
@@ -49,6 +56,8 @@ public class GiantPacman {
 
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+		eventBus.addListener(this::gatherData);
+
 		if (FMLEnvironment.dist == Dist.CLIENT) {
 			eventBus.addListener(ClientSetupEvent::onFMLClientSetupEvent);
 		}
@@ -63,5 +72,18 @@ public class GiantPacman {
 		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		forgeBus.addListener(EventPriority.HIGH, BiomeLoadEventSubscriber::onBiomeLoadingEvent);
 		forgeBus.register(this);
+	}
+
+	private void gatherData(final GatherDataEvent event) {
+		DataGenerator dataGenerator = event.getGenerator();
+		final ExistingFileHelper existing = event.getExistingFileHelper();
+		if (event.includeServer()) {
+			dataGenerator.addProvider(new GPTagProvider.GPBlockTagProvider(dataGenerator, existing));
+			dataGenerator.addProvider(new GPTagProvider.GPItemTagProvider(dataGenerator, existing));
+		}
+	}
+
+	public static Advancement getAdvancement(ResourceLocation id) {
+		return ServerLifecycleHooks.getCurrentServer().getAdvancements().getAdvancement(id);
 	}
 }
