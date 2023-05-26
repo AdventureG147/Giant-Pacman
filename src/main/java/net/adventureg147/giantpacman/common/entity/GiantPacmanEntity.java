@@ -1,5 +1,7 @@
 package net.adventureg147.giantpacman.common.entity;
 
+import net.adventureg147.giantpacman.common.registry.GPSoundEvents;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -11,6 +13,9 @@ import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -48,10 +53,25 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		super.registerGoals();
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal( 1, new NearestAttackableTargetGoal<>( this, PlayerEntity.class, true));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PigEntity.class, true));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, CowEntity.class, true));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, SheepEntity.class, true));
+		this.goalSelector.addGoal( 3, new NearestAttackableTargetGoal<>( this, PlayerEntity.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PigEntity.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, CowEntity.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, SheepEntity.class, true));
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return GPSoundEvents.GIANT_PACMAN_DEATH.get();
+	}
+
+//	@Override
+//	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+//		return GPSoundEvents.PACMAN_HURT.get();
+//	}
+
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+		this.playSound(GPSoundEvents.GIANT_PACMAN_LIVING.get(), 0.20F, 1.F);
 	}
 
 	@Override
