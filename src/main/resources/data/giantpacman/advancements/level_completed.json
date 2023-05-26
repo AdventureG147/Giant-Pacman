@@ -12,7 +12,7 @@
   },
   "parent": "giantpacman:pacman_trophy",
   "criteria": {
-    "Pacman Trophy": {
+    "impossible": {
       "trigger": "minecraft:impossible"
     }
   }

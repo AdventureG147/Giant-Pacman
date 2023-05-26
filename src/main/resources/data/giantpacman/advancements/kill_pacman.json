@@ -12,9 +12,8 @@
   },
   "parent": "giantpacman:giantpacman_mod",
   "criteria": {
-    "Pacman Trophy": {
+    "impossible": {
       "trigger": "minecraft:impossible"
-      }
     }
   }
 }

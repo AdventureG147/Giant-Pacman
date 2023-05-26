@@ -13,6 +13,6 @@ public class ClientSetupEvent {
 		RenderingRegistry.registerEntityRenderingHandler(GPEntityTypes.GIANT_PACMAN.get(), GiantPacmanEntityRenderer::new);
 
 		RenderTypeLookup.setRenderLayer(GPBlocks.PACMAN_TROPHY.get(), RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(GPBlocks.GOLDEN_TROPHY.get(), RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(GPBlocks.GOLDEN_PACMAN_TROPHY.get(), RenderType.cutout());
 	}
 }
