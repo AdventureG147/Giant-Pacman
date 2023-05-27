@@ -56,13 +56,7 @@ public class GPTagProvider extends BlockTagsProvider {
 		@Override
 		protected void addTags() {
 			this.tag(GPTags.Items.UNDROPPABLE).add(GPBlocks.PACMAN_TROPHY.get().asItem(), GPBlocks.GOLDEN_PACMAN_TROPHY.get().asItem(), GPItems.PACMAN_SPAWN_EGG.get(),
-					Blocks.BEDROCK.asItem(), Blocks.BARRIER.asItem(), Blocks.COMMAND_BLOCK.asItem(), Blocks.CHAIN_COMMAND_BLOCK.asItem(), Blocks.REPEATING_COMMAND_BLOCK.asItem(), Blocks.STRUCTURE_BLOCK.asItem(), Blocks.STRUCTURE_VOID.asItem(), Blocks.JIGSAW.asItem(), Items.DEBUG_STICK, Items.COMMAND_BLOCK_MINECART)
-					.addOptional(new ResourceLocation("chaosawakens", "ender_dragon_span_egg"))
-					.addOptional(new ResourceLocation("chaosawakens", "wither_span_egg"))
-					.addOptional(new ResourceLocation("chaosawakens", "dev_item1"))
-					.addOptional(new ResourceLocation("chaosawakens", "dev_item16"))
-					.addOptional(new ResourceLocation("chaosawakens", "dev_item64"))
-					.addOptional(new ResourceLocation("chaosawakens", "dev_item_damage"));
+					Blocks.BEDROCK.asItem(), Blocks.END_PORTAL_FRAME.asItem(), Blocks.BARRIER.asItem(), Blocks.COMMAND_BLOCK.asItem(), Blocks.CHAIN_COMMAND_BLOCK.asItem(), Blocks.REPEATING_COMMAND_BLOCK.asItem(), Blocks.STRUCTURE_BLOCK.asItem(), Blocks.STRUCTURE_VOID.asItem(), Blocks.JIGSAW.asItem(), Items.DEBUG_STICK, Items.COMMAND_BLOCK_MINECART);
 		}
 	}
 }

@@ -107,7 +107,6 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		BlockPos blockPos = this.blockPosition();
 
 		if (player instanceof ServerPlayerEntity) {
-			GiantPacman.LOGGER.debug("1");
 			PlayerAdvancements advancements = ((ServerPlayerEntity) player).getAdvancements();
 			AdvancementManager manager = ((ServerWorld) player.getCommandSenderWorld()).getServer().getAdvancements();
 			Advancement kill_pacman = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "kill_pacman"));
@@ -131,9 +130,8 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 			}
 		}
 
-		for (int i = 0; i < 100; i++) {
-			this.level.addFreshEntity(new ItemEntity(this.level,
-					blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
+		for (int i = 0; i < 10; i++) {
+			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
 		}
 	}
 

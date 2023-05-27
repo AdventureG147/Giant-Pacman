@@ -1,0 +1,13 @@
+459b614b515ca2098ecbdb6e47bb89cecca3cb7e assets/giantpacman/models/item/blinky.json
+c80f7978552198c405e5b59a59da08131c70fd4c assets/giantpacman/models/item/clyde.json
+77fb82eee3f0bad2744c00fb4c32ba6c07440ea0 assets/giantpacman/models/item/funky.json
+b1e2ae4c5ced48e22ede69d41b641a023b51241f assets/giantpacman/models/item/inky.json
+f91bf1259b7dd1834313cd6c0b744bacb90d6da7 assets/giantpacman/models/item/orson.json
+70a7a02fd58f170a149559677c0d1543d9c7ac64 assets/giantpacman/models/item/pacman_spawn_egg.json
+2fb30927765fbd8f035c9edf8de485ee1d430090 assets/giantpacman/models/item/pinky.json
+6ddde4395e9b71cd5fd6260ee14005f180943f2a assets/giantpacman/models/item/spunky.json
+9c501141873c8d040170bca4932ec43be66c664a assets/giantpacman/models/item/sue.json
+057de3e9b4d2fd3825384d1717118e519b84c1f8 assets/giantpacman/models/item/thank_you_blackout.json
+5bc9c1479f692d5987db2582e6415be0b77cf8a9 assets/giantpacman/models/item/tim.json
+283722be40ce6724e91d4ae695a08e3eff99352c data/giantpacman/loot_tables/entities/giant_pacman.json
+056e1e2c8230042f815a43cbc746e7ad2c2edd7f data/giantpacman/tags/items/undroppable.json

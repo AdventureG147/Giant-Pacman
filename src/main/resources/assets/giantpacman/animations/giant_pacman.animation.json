@@ -5,7 +5,7 @@
 			"loop": true,
 			"animation_length": 1.04167,
 			"bones": {
-				"Bottom": {
+				"bottom": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -18,7 +18,7 @@
 						}
 					}
 				},
-				"Top": {
+				"top": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -31,7 +31,7 @@
 						}
 					}
 				},
-				"Tongue": {
+				"tongue": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
