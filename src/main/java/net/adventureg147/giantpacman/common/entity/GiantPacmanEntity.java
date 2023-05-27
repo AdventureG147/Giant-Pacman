@@ -57,6 +57,7 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 100.0D)
 				.add(Attributes.ATTACK_SPEED, 1)
+				.add(Attributes.ARMOR, 10D)
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
 				.add(Attributes.ATTACK_DAMAGE, 30.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 0.5D)
@@ -130,8 +131,9 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 			}
 		}
 
-		for (int i = 0; i < 5; i++) {
-			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
+		for (int i = 0; i < 100; i++) {
+			this.level.addFreshEntity(new ItemEntity(this.level,
+					blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
 		}
 	}
 
