@@ -8,6 +8,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.SCooldownPacket;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectUtils;
@@ -33,6 +34,7 @@ public class PacmanGhostItem extends Item {
 		if (player.isCrouching()) {
 			if (!world.isClientSide) {
 				player.addEffect(new EffectInstance(effect.getEffect(), effect.getDuration(), effect.getAmplifier()));
+				player.getCooldowns().addCooldown(this, 200);
 			}
 			if (!player.isCreative()) {
 				stack.shrink(1);
