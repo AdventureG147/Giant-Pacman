@@ -4,6 +4,17 @@
 	"item.giantpacman.pacman_spawn_egg": "Pacman Spawn Egg",
 	"item.giantpacman.thank_you_blackout": "Thank You Blackout!",
 
+	"item.giantpacman.blinky": "Blinky",
+	"item.giantpacman.pinky": "Pinky",
+	"item.giantpacman.inky": "Inky",
+	"item.giantpacman.clyde": "Clyde",
+	"item.giantpacman.sue": "Sue",
+	"item.giantpacman.tim": "Tim",
+	"item.giantpacman.funky": "Funky",
+	"item.giantpacman.spunky": "Spunky",
+	"item.giantpacman.orson": "Orson",
+	"item.giantpacman.ghost.tooltip": "When Used (%s + %s):",
+
 	"entity.giantpacman.giant_pacman": "Giant Pacman",
 
 	"block.giantpacman.pacman_trophy": "Pacman Trophy",

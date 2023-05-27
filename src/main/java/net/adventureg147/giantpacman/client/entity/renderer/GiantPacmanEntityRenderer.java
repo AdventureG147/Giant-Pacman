@@ -19,11 +19,8 @@ public class GiantPacmanEntityRenderer extends GeoEntityRenderer<GiantPacmanEnti
 	}
 
 	@Override
-	public void renderEarly(GiantPacmanEntity animatable, MatrixStack stackIn, float ticks,
-							IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn,
-							int packedOverlayIn, float red, float green, float blue, float partialTicks) {
-		super.renderEarly(animatable, stackIn, ticks, renderTypeBuffer,
-				vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, partialTicks);
+	public void renderEarly(GiantPacmanEntity animatable, MatrixStack stackIn, float ticks, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder vertexBuilder, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float partialTicks) {
+		super.renderEarly(animatable, stackIn, ticks, renderTypeBuffer, vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, partialTicks);
 	}
 
 	@Override

@@ -12,13 +12,13 @@
 			},
 			"bones": [
 				{
-					"name": "Pacman",
+					"name": "pacman",
 					"pivot": [0, 24, 28],
 					"rotation": [0, 180, 0]
 				},
 				{
 					"name": "bottom",
-					"parent": "Pacman",
+					"parent": "pacman",
 					"pivot": [0, 32, 20],
 					"rotation": [-12.5, 0, 0],
 					"cubes": [
@@ -39,7 +39,7 @@
 					]
 				},
 				{
-					"name": "Teeth_Bottom",
+					"name": "teeth_bottom",
 					"parent": "bottom",
 					"pivot": [0, 25.48827, 27.58929],
 					"cubes": [
@@ -53,21 +53,21 @@
 					]
 				},
 				{
-					"name": "Tounge",
+					"name": "tongue",
 					"parent": "bottom",
 					"pivot": [0, 33.48827, 22.58929]
 				},
 				{
-					"name": "Tounge2",
-					"parent": "Tounge",
+					"name": "tongue2",
+					"parent": "tongue",
 					"pivot": [0, 34.48827, 27.58929],
 					"cubes": [
 						{"origin": [-2, 33.98827, 27.58929], "size": [4, 1, 3], "pivot": [0, 31.48827, 28.58929], "rotation": [2.5, 0, 0], "uv": [68, 5]}
 					]
 				},
 				{
-					"name": "Tounge1",
-					"parent": "Tounge",
+					"name": "tongue1",
+					"parent": "tongue",
 					"pivot": [0, 34.48827, 24.58929],
 					"cubes": [
 						{"origin": [-2, 32.48827, 23.58929], "size": [4, 1, 5], "pivot": [0, 31.48827, 23.58929], "rotation": [17.5, 0, 0], "uv": [22, 60]}
@@ -75,7 +75,7 @@
 				},
 				{
 					"name": "top",
-					"parent": "Pacman",
+					"parent": "pacman",
 					"pivot": [0, 32, 19],
 					"rotation": [-25, 0, 180],
 					"cubes": [
@@ -96,7 +96,7 @@
 					]
 				},
 				{
-					"name": "Teeth_Top",
+					"name": "teeth_top",
 					"parent": "top",
 					"pivot": [0, 25.59489, 27.71634],
 					"cubes": [
@@ -110,7 +110,7 @@
 					]
 				},
 				{
-					"name": "Eyes",
+					"name": "eyes",
 					"parent": "top",
 					"pivot": [0, 25.59489, 27.71634],
 					"cubes": [

@@ -7,6 +7,8 @@ import net.adventureg147.giantpacman.common.registry.GPEntityTypes;
 import net.adventureg147.giantpacman.common.registry.GPItems;
 import net.adventureg147.giantpacman.common.registry.GPSoundEvents;
 import net.adventureg147.giantpacman.common.worldgen.BiomeLoadEventSubscriber;
+import net.adventureg147.giantpacman.data.GPItemModelProvider;
+import net.adventureg147.giantpacman.data.GPLootTableProvider;
 import net.adventureg147.giantpacman.data.GPTagProvider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.data.DataGenerator;
@@ -77,13 +79,13 @@ public class GiantPacman {
 	private void gatherData(final GatherDataEvent event) {
 		DataGenerator dataGenerator = event.getGenerator();
 		final ExistingFileHelper existing = event.getExistingFileHelper();
+		if (event.includeClient()) {
+			dataGenerator.addProvider(new GPItemModelProvider(dataGenerator, existing));
+		}
 		if (event.includeServer()) {
+			dataGenerator.addProvider(new GPLootTableProvider(dataGenerator));
 			dataGenerator.addProvider(new GPTagProvider.GPBlockTagProvider(dataGenerator, existing));
 			dataGenerator.addProvider(new GPTagProvider.GPItemTagProvider(dataGenerator, existing));
 		}
-	}
-
-	public static Advancement getAdvancement(ResourceLocation id) {
-		return ServerLifecycleHooks.getCurrentServer().getAdvancements().getAdvancement(id);
 	}
 }
