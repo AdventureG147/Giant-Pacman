@@ -9,6 +9,7 @@ import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -113,10 +114,13 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		AxisAlignedBB axisAlignedBB = this.getBoundingBox().inflate(0.2D, -0.5, 0.2D);
 
 		if (this.horizontalCollision && ForgeEventFactory.getMobGriefingEvent(level, this)) {
-			for (BlockPos blockPos : BlockPos.betweenClosed(MathHelper.floor(axisAlignedBB.minX), MathHelper.floor(axisAlignedBB.minY), MathHelper.floor(axisAlignedBB.minZ), MathHelper.floor(axisAlignedBB.maxX), MathHelper.floor(axisAlignedBB.maxY), MathHelper.floor(axisAlignedBB.maxZ))) {
+			for (BlockPos blockPos : BlockPos.betweenClosed(MathHelper.floor(axisAlignedBB.minX),
+					MathHelper.floor(axisAlignedBB.minY), MathHelper.floor(axisAlignedBB.minZ),
+					MathHelper.floor(axisAlignedBB.maxX), MathHelper.floor(axisAlignedBB.maxY),
+					MathHelper.floor(axisAlignedBB.maxZ))) {
 				BlockState blockState = this.level.getBlockState(blockPos);
 				Block block = blockState.getBlock();
-				if (!(block.getExplosionResistance() >= 1800000F)) {
+				if (!(block.getExplosionResistance() >= 1400F)) {
 					flag = this.level.destroyBlock(blockPos, false, this) || flag;
 				}
 			}
