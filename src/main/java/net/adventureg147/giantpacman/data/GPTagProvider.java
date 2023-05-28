@@ -2,7 +2,6 @@ package net.adventureg147.giantpacman.data;
 
 import net.adventureg147.giantpacman.GiantPacman;
 import net.adventureg147.giantpacman.common.registry.GPBlocks;
-import net.adventureg147.giantpacman.common.registry.GPItems;
 import net.adventureg147.giantpacman.common.registry.GPTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
@@ -55,8 +54,9 @@ public class GPTagProvider extends BlockTagsProvider {
 
 		@Override
 		protected void addTags() {
-			this.tag(GPTags.Items.UNDROPPABLE).add(GPBlocks.PACMAN_TROPHY.get().asItem(), GPBlocks.GOLDEN_PACMAN_TROPHY.get().asItem(), GPItems.PACMAN_SPAWN_EGG.get(),
-					Blocks.BEDROCK.asItem(), Blocks.END_PORTAL_FRAME.asItem(), Blocks.BARRIER.asItem(), Blocks.COMMAND_BLOCK.asItem(), Blocks.CHAIN_COMMAND_BLOCK.asItem(), Blocks.REPEATING_COMMAND_BLOCK.asItem(), Blocks.STRUCTURE_BLOCK.asItem(), Blocks.STRUCTURE_VOID.asItem(), Blocks.JIGSAW.asItem(), Items.DEBUG_STICK, Items.COMMAND_BLOCK_MINECART);
+			this.tag(GPTags.Items.UNDROPPABLE).add(GPBlocks.PACMAN_TROPHY.get().asItem(), GPBlocks.GOLDEN_PACMAN_TROPHY.get().asItem(),
+					Blocks.BEDROCK.asItem(), Blocks.END_PORTAL_FRAME.asItem(), Blocks.BARRIER.asItem(), Blocks.COMMAND_BLOCK.asItem(), Blocks.CHAIN_COMMAND_BLOCK.asItem(), Blocks.REPEATING_COMMAND_BLOCK.asItem(), Blocks.STRUCTURE_BLOCK.asItem(), Blocks.STRUCTURE_VOID.asItem(), Blocks.JIGSAW.asItem(), Blocks.SPAWNER.asItem(),
+					Items.DEBUG_STICK, Items.COMMAND_BLOCK_MINECART, Items.WRITTEN_BOOK, Items.ENCHANTED_BOOK);
 		}
 	}
 }

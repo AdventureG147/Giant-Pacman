@@ -10,4 +10,4 @@ f91bf1259b7dd1834313cd6c0b744bacb90d6da7 assets/giantpacman/models/item/orson.js
 057de3e9b4d2fd3825384d1717118e519b84c1f8 assets/giantpacman/models/item/thank_you_blackout.json
 5bc9c1479f692d5987db2582e6415be0b77cf8a9 assets/giantpacman/models/item/tim.json
 283722be40ce6724e91d4ae695a08e3eff99352c data/giantpacman/loot_tables/entities/giant_pacman.json
-056e1e2c8230042f815a43cbc746e7ad2c2edd7f data/giantpacman/tags/items/undroppable.json
+aab60b190b223a33f30805d2c7ec9aa6a405d510 data/giantpacman/tags/items/undroppable.json

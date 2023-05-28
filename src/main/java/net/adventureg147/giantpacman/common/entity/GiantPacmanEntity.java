@@ -7,6 +7,7 @@ import net.adventureg147.giantpacman.common.registry.GPTags;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.advancements.PlayerAdvancements;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -30,9 +31,12 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -45,6 +49,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	private final AnimationFactory factory = new AnimationFactory(this);
@@ -61,7 +66,7 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
 				.add(Attributes.ATTACK_DAMAGE, 30.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 0.5D)
-				.add(Attributes.FOLLOW_RANGE, 100.0D);
+				.add(Attributes.FOLLOW_RANGE, 64.0D);
 	}
 
 	private <T extends IAnimatable> PlayState predicate(AnimationEvent<T> event) {
@@ -101,6 +106,24 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	}
 
 	@Override
+	public void aiStep() {
+		super.aiStep();
+
+		boolean flag = false;
+		AxisAlignedBB axisAlignedBB = this.getBoundingBox().inflate(0.2D, -0.5, 0.2D);
+
+		if (this.horizontalCollision && ForgeEventFactory.getMobGriefingEvent(level, this)) {
+			for (BlockPos blockPos : BlockPos.betweenClosed(MathHelper.floor(axisAlignedBB.minX), MathHelper.floor(axisAlignedBB.minY), MathHelper.floor(axisAlignedBB.minZ), MathHelper.floor(axisAlignedBB.maxX), MathHelper.floor(axisAlignedBB.maxY), MathHelper.floor(axisAlignedBB.maxZ))) {
+				BlockState blockState = this.level.getBlockState(blockPos);
+				Block block = blockState.getBlock();
+				if (!(block.getExplosionResistance() >= 1800000F)) {
+					flag = this.level.destroyBlock(blockPos, false, this) || flag;
+				}
+			}
+		}
+	}
+
+	@Override
 	public void die(DamageSource cause) {
 		super.die(cause);
 		Entity player = cause.getEntity();
@@ -109,13 +132,11 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		if (player instanceof ServerPlayerEntity) {
 			PlayerAdvancements advancements = ((ServerPlayerEntity) player).getAdvancements();
 			AdvancementManager manager = ((ServerWorld) player.getCommandSenderWorld()).getServer().getAdvancements();
-			Advancement kill_pacman = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID,
-					"kill_pacman"));
+			Advancement kill_pacman = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "kill_pacman"));
 			assert kill_pacman != null;
 			advancements.award(kill_pacman, "impossible");
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) >= 255) {
-				Advancement level_completed = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID,
-						"level_completed"));
+				Advancement level_completed = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "level_completed"));
 				assert level_completed != null;
 				advancements.award(level_completed, "impossible");
 			}
@@ -123,26 +144,23 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) == 10) {
 				ItemStack trophy = new ItemStack(GPBlocks.PACMAN_TROPHY.get());
-				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(),
-						blockPos.getY(), blockPos.getZ(), trophy));
+				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), trophy));
 			}
 
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) == 100) {
 				ItemStack golden_trophy = new ItemStack(GPBlocks.GOLDEN_PACMAN_TROPHY.get());
-				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(),
-						blockPos.getY(), blockPos.getZ(), golden_trophy));
+				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), golden_trophy));
 			}
 		}
 
 		for (int i = 0; i < 10; i++) {
-			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(),
-					blockPos.getY(), blockPos.getZ(), randomItem()));
+			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
 		}
 	}
 
 	public ItemStack randomItem() {
 		List<Item> itemList = new ArrayList<>(ForgeRegistries.ITEMS.getValues());
-		itemList.removeIf(item -> item.is(GPTags.Items.UNDROPPABLE));
+		itemList.removeIf(item -> item.is(GPTags.Items.UNDROPPABLE) || Objects.requireNonNull(item.getRegistryName()).getPath().contains("spawn_egg"));
 		Item randomItem = itemList.get(random.nextInt(itemList.size()));
 
 		return randomItem.getDefaultInstance();
