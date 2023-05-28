@@ -3,7 +3,6 @@
   "values": [
     "giantpacman:pacman_trophy",
     "giantpacman:golden_pacman_trophy",
-    "giantpacman:pacman_spawn_egg",
     "minecraft:bedrock",
     "minecraft:end_portal_frame",
     "minecraft:barrier",
@@ -13,7 +12,10 @@
     "minecraft:structure_block",
     "minecraft:structure_void",
     "minecraft:jigsaw",
+    "minecraft:spawner",
     "minecraft:debug_stick",
-    "minecraft:command_block_minecart"
+    "minecraft:command_block_minecart",
+    "minecraft:written_book",
+    "minecraft:enchanted_book"
   ]
 }
