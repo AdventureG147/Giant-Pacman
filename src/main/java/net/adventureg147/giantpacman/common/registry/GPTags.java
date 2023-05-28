@@ -10,7 +10,8 @@ public class GPTags {
 		public static ITag.INamedTag<Item> tag(String name) {
 			return ItemTags.bind(GiantPacman.MODID + ":" + name);
 		}
-
 		public static final ITag.INamedTag<Item> UNDROPPABLE = tag("undroppable");
+
 	}
+
 }

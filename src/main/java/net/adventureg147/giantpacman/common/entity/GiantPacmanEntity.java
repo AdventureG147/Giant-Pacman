@@ -85,10 +85,10 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		return GPSoundEvents.GIANT_PACMAN_DEATH.get();
 	}
 
-//	@Override
-//	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-//		return GPSoundEvents.PACMAN_HURT.get();
-//	}
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return GPSoundEvents.GIANT_PACMAN_HURT.get();
+	}
 
 	@Override
 	protected void playStepSound(BlockPos pos, BlockState blockIn) {
@@ -109,11 +109,13 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		if (player instanceof ServerPlayerEntity) {
 			PlayerAdvancements advancements = ((ServerPlayerEntity) player).getAdvancements();
 			AdvancementManager manager = ((ServerWorld) player.getCommandSenderWorld()).getServer().getAdvancements();
-			Advancement kill_pacman = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "kill_pacman"));
+			Advancement kill_pacman = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID,
+					"kill_pacman"));
 			assert kill_pacman != null;
 			advancements.award(kill_pacman, "impossible");
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) >= 255) {
-				Advancement level_completed = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "level_completed"));
+				Advancement level_completed = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID,
+						"level_completed"));
 				assert level_completed != null;
 				advancements.award(level_completed, "impossible");
 			}
@@ -121,17 +123,20 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) == 10) {
 				ItemStack trophy = new ItemStack(GPBlocks.PACMAN_TROPHY.get());
-				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), trophy));
+				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(),
+						blockPos.getY(), blockPos.getZ(), trophy));
 			}
 
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) == 100) {
 				ItemStack golden_trophy = new ItemStack(GPBlocks.GOLDEN_PACMAN_TROPHY.get());
-				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), golden_trophy));
+				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(),
+						blockPos.getY(), blockPos.getZ(), golden_trophy));
 			}
 		}
 
 		for (int i = 0; i < 10; i++) {
-			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
+			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(),
+					blockPos.getY(), blockPos.getZ(), randomItem()));
 		}
 	}
 
@@ -151,7 +156,8 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 
 	@Override
 	public void registerControllers(AnimationData data) {
-		data.addAnimationController(new AnimationController<>(this, "giantpacmancontroller", 0, this::predicate));
+		data.addAnimationController(new AnimationController<>(this,
+				"giantpacmancontroller", 0, this::predicate));
 	}
 
 	@Override
