@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-issueTrackerURL="https://github.com/AdventureG147/Giant-Pacman-beta-0.1.1-1.16.5/issues"
+issueTrackerURL="https://github.com/AdventureG147/Giant-Pacman-beta-0.1.2-1.16.5/issues"
 license="All rights reserved"
 
 [[mods]]
 modId="giantpacman"
 version="${file.jarVersion}"
 displayName="Giant Pacman"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/giant-pacman-1-16-5"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/giant-pacman"
 logoFile="logo.png"
 credits="AdventureG147, Blackout"
 authors="AdventureG147 - Creator"
@@ -32,5 +32,12 @@ modId="geckolib3"
 mandatory=true
 versionRange="[3.0.90,)"
 ordering="NONE"
+side="BOTH"
+
+[[dependencies.giantpacman]]
+modId="jeresources"
+mandatory=false
+versionRange="[0.12,]"
+ordering="AFTER"
 side="BOTH"
 

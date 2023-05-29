@@ -1,0 +1,29 @@
+{
+  "parent": "giantpacman:root/root",
+  "display": {
+    "icon": {
+      "item": "giantpacman:vulnerable_ghost_icon"
+    },
+    "title": {
+      "translate": "advancements.giantpacman.level_completed.title"
+    },
+    "description": {
+      "translate": "advancements.giantpacman.level_completed.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "giantpacman:textures/gui/advancements/backgrounds/giant_pacman.png"
+  },
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "impossible"
+    ]
+  ]
+}

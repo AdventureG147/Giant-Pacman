@@ -1,12 +1,14 @@
 package net.adventureg147.giantpacman;
 
 import net.adventureg147.giantpacman.client.ClientSetupEvent;
+import net.adventureg147.giantpacman.client.TooltipEventSubscriber;
 import net.adventureg147.giantpacman.common.events.EntitySetAttributeEventSubscriber;
 import net.adventureg147.giantpacman.common.registry.GPBlocks;
 import net.adventureg147.giantpacman.common.registry.GPEntityTypes;
 import net.adventureg147.giantpacman.common.registry.GPItems;
 import net.adventureg147.giantpacman.common.registry.GPSoundEvents;
 import net.adventureg147.giantpacman.common.worldgen.BiomeLoadEventSubscriber;
+import net.adventureg147.giantpacman.data.GPAdvancementProvider;
 import net.adventureg147.giantpacman.data.GPItemModelProvider;
 import net.adventureg147.giantpacman.data.GPLootTableProvider;
 import net.adventureg147.giantpacman.data.GPTagProvider;
@@ -54,11 +56,13 @@ public class GiantPacman {
 		LOGGER.debug("Mod ID for " + MODNAME + " is: " + MODID);
 
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
 		eventBus.addListener(this::gatherData);
 
 		if (FMLEnvironment.dist == Dist.CLIENT) {
 			eventBus.addListener(ClientSetupEvent::onFMLClientSetupEvent);
+			forgeBus.addListener(TooltipEventSubscriber::onToolTipEvent);
 		}
 
 		GPBlocks.ITEM_BLOCKS.register(eventBus);
@@ -68,7 +72,6 @@ public class GiantPacman {
 		GPSoundEvents.SOUND_EVENTS.register(eventBus);
 		eventBus.addListener(EntitySetAttributeEventSubscriber::onEntityAttributeCreationEvent);
 
-		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		forgeBus.addListener(EventPriority.HIGH, BiomeLoadEventSubscriber::onBiomeLoadingEvent);
 		forgeBus.register(this);
 	}
@@ -80,6 +83,7 @@ public class GiantPacman {
 			dataGenerator.addProvider(new GPItemModelProvider(dataGenerator, existing));
 		}
 		if (event.includeServer()) {
+			dataGenerator.addProvider(new GPAdvancementProvider(dataGenerator));
 			dataGenerator.addProvider(new GPLootTableProvider(dataGenerator));
 			dataGenerator.addProvider(new GPTagProvider.GPBlockTagProvider(dataGenerator, existing));
 			dataGenerator.addProvider(new GPTagProvider.GPItemTagProvider(dataGenerator, existing));

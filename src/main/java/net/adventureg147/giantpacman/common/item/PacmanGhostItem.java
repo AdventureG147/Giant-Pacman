@@ -2,16 +2,18 @@ package net.adventureg147.giantpacman.common.item;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.server.SCooldownPacket;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectUtils;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.*;
@@ -32,14 +34,21 @@ public class PacmanGhostItem extends Item {
 	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (player.isCrouching()) {
-			if (!world.isClientSide) {
-				player.addEffect(new EffectInstance(effect.getEffect(), effect.getDuration(), effect.getAmplifier()));
-				player.getCooldowns().addCooldown(this, 200);
+			if (player instanceof ServerPlayerEntity) {
+				CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayerEntity) player, stack);
 			}
-			if (!player.isCreative()) {
+
+			player.getCooldowns().addCooldown(this, 20);
+			if (!world.isClientSide) {
+				player.addEffect(new EffectInstance(effect));
+			}
+
+			player.awardStat(Stats.ITEM_USED.get(this));
+			if (!player.abilities.instabuild) {
 				stack.shrink(1);
 			}
-			return ActionResult.success(stack);
+
+			return ActionResult.sidedSuccess(stack, world.isClientSide());
 		}
 		return super.use(world, player, hand);
 	}

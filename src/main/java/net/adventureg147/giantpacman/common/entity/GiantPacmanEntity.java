@@ -9,14 +9,10 @@ import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.CowEntity;
@@ -26,6 +22,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.Path;
+import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
@@ -35,6 +33,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -48,9 +47,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	private final AnimationFactory factory = new AnimationFactory(this);
@@ -64,7 +66,7 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 				.add(Attributes.MAX_HEALTH, 100.0D)
 				.add(Attributes.ATTACK_SPEED, 1)
 				.add(Attributes.ARMOR, 10D)
-				.add(Attributes.MOVEMENT_SPEED, 0.3D)
+				.add(Attributes.MOVEMENT_SPEED, 0.25D)
 				.add(Attributes.ATTACK_DAMAGE, 10.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 64.0D);
@@ -79,8 +81,8 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
-		this.goalSelector.addGoal( 3, new NearestAttackableTargetGoal<>( this, PlayerEntity.class, true));
+		this.goalSelector.addGoal(2, new GiantPacmanAttackGoal(this, 1.15D, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PigEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, CowEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, SheepEntity.class, true));
@@ -110,18 +112,20 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	public void aiStep() {
 		super.aiStep();
 
-		boolean flag = false;
-		AxisAlignedBB axisAlignedBB = this.getBoundingBox().inflate(0.2D, -0.5, 0.2D);
+		if (this.isAlive()) {
+			boolean flag = false;
+			AxisAlignedBB axisAlignedBB = this.getBoundingBox().inflate(0.2D, -0.5, 0.2D);
 
-		if (this.horizontalCollision && ForgeEventFactory.getMobGriefingEvent(level, this)) {
-			for (BlockPos blockPos : BlockPos.betweenClosed(MathHelper.floor(axisAlignedBB.minX),
-					MathHelper.floor(axisAlignedBB.minY), MathHelper.floor(axisAlignedBB.minZ),
-					MathHelper.floor(axisAlignedBB.maxX), MathHelper.floor(axisAlignedBB.maxY),
-					MathHelper.floor(axisAlignedBB.maxZ))) {
-				BlockState blockState = this.level.getBlockState(blockPos);
-				Block block = blockState.getBlock();
-				if (!(block.getExplosionResistance() >= 1400F)) {
-					flag = this.level.destroyBlock(blockPos, false, this) || flag;
+			if (this.horizontalCollision && ForgeEventFactory.getMobGriefingEvent(level, this)) {
+				for (BlockPos blockPos : BlockPos.betweenClosed(MathHelper.floor(axisAlignedBB.minX),
+						MathHelper.floor(axisAlignedBB.minY), MathHelper.floor(axisAlignedBB.minZ),
+						MathHelper.floor(axisAlignedBB.maxX), MathHelper.floor(axisAlignedBB.maxY),
+						MathHelper.floor(axisAlignedBB.maxZ))) {
+					BlockState blockState = this.level.getBlockState(blockPos);
+					Block block = blockState.getBlock();
+					if (!(block.getExplosionResistance() >= 1400F)) {
+						flag = this.level.destroyBlock(blockPos, false, this) || flag;
+					}
 				}
 			}
 		}
@@ -136,29 +140,31 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 		if (player instanceof ServerPlayerEntity) {
 			PlayerAdvancements advancements = ((ServerPlayerEntity) player).getAdvancements();
 			AdvancementManager manager = ((ServerWorld) player.getCommandSenderWorld()).getServer().getAdvancements();
-			Advancement kill_pacman = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "kill_pacman"));
-			assert kill_pacman != null;
-			advancements.award(kill_pacman, "impossible");
+			Advancement level_completed = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "root/level_completed"));
+			assert level_completed != null;
+			advancements.award(level_completed, "impossible");
 			if (getKillCount((ServerPlayerEntity) player, this.getType()) >= 255) {
-				Advancement level_completed = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "level_completed"));
-				assert level_completed != null;
-				advancements.award(level_completed, "impossible");
+				Advancement game_over = manager.getAdvancement(new ResourceLocation(GiantPacman.MODID, "root/game_over"));
+				assert game_over != null;
+				advancements.award(game_over, "impossible");
 			}
 
 
-			if (getKillCount((ServerPlayerEntity) player, this.getType()) == 10) {
-				ItemStack trophy = new ItemStack(GPBlocks.PACMAN_TROPHY.get());
-				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), trophy));
-			}
+			if (this.shouldDropLoot() && this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
+				if (getKillCount((ServerPlayerEntity) player, this.getType()) == 10) {
+					ItemStack trophy = new ItemStack(GPBlocks.PACMAN_TROPHY.get());
+					this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), trophy));
+				}
 
-			if (getKillCount((ServerPlayerEntity) player, this.getType()) == 100) {
-				ItemStack golden_trophy = new ItemStack(GPBlocks.GOLDEN_PACMAN_TROPHY.get());
-				this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), golden_trophy));
-			}
-		}
+				if (getKillCount((ServerPlayerEntity) player, this.getType()) == 100) {
+					ItemStack golden_trophy = new ItemStack(GPBlocks.GOLDEN_PACMAN_TROPHY.get());
+					this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), golden_trophy));
+				}
 
-		for (int i = 0; i < 10; i++) {
-			this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
+				for (int i = 0; i < 10; i++) {
+					this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomItem()));
+				}
+			}
 		}
 	}
 
@@ -178,12 +184,22 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 
 	@Override
 	public void registerControllers(AnimationData data) {
-		data.addAnimationController(new AnimationController<>(this,
-				"giantpacmancontroller", 0, this::predicate));
+		data.addAnimationController(new AnimationController<>(this, "giantpacmancontroller", 0, this::predicate));
 	}
 
 	@Override
 	public AnimationFactory getFactory() {
 		return this.factory;
+	}
+
+	public static class GiantPacmanAttackGoal extends MeleeAttackGoal {
+		public GiantPacmanAttackGoal(CreatureEntity creatureEntity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+			super(creatureEntity, speedModifier, followingTargetEvenIfNotSeen);
+		}
+
+		@Override
+		protected double getAttackReachSqr(LivingEntity pAttackTarget) {
+			return this.mob.getBbWidth() * 1.5F * this.mob.getBbWidth() * 1.5F + pAttackTarget.getBbWidth();
+		}
 	}
 }

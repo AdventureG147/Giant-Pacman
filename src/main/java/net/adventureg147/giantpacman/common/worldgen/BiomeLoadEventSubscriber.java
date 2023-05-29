@@ -24,7 +24,7 @@ public class BiomeLoadEventSubscriber {
 
 	private static class MobSpawnHandler {
 		private static final Consumer<MobSpawnInfoBuilder> PACMAN_SPAWNS = (builder) -> {
-			builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(GPEntityTypes.GIANT_PACMAN.get(), 40, 1, 2));
+			builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(GPEntityTypes.GIANT_PACMAN.get(), 1, 1, 1));
 		};
 
 		public static void addMobSpawns(BiomeLoadingEvent event) {

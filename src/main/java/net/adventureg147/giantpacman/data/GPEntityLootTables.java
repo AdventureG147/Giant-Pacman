@@ -1,6 +1,7 @@
 package net.adventureg147.giantpacman.data;
 
 import net.adventureg147.giantpacman.GiantPacman;
+import net.adventureg147.giantpacman.common.registry.GPBlocks;
 import net.adventureg147.giantpacman.common.registry.GPEntityTypes;
 import net.adventureg147.giantpacman.common.registry.GPItems;
 import net.minecraft.data.loot.EntityLootTables;
@@ -10,6 +11,7 @@ import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.conditions.KilledByPlayer;
+import net.minecraft.loot.conditions.RandomChance;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashSet;
@@ -54,7 +56,18 @@ public class GPEntityLootTables extends EntityLootTables {
 								.add(ItemLootEntry.lootTableItem(GPItems.SPUNKY.get())
 										.when(KilledByPlayer.killedByPlayer()))
 								.add(ItemLootEntry.lootTableItem(GPItems.ORSON.get())
-										.when(KilledByPlayer.killedByPlayer()))));
+										.when(KilledByPlayer.killedByPlayer())))
+						.withPool(LootPool.lootPool()
+								.setRolls(ConstantRange.exactly(0))
+								.add(ItemLootEntry.lootTableItem(GPItems.RANDOM_ITEMS_DROP_TOOLTIP.get())
+										.when(KilledByPlayer.killedByPlayer())
+										.when(RandomChance.randomChance(0)))
+								.add(ItemLootEntry.lootTableItem(GPBlocks.PACMAN_TROPHY.get())
+										.when(KilledByPlayer.killedByPlayer())
+										.when(RandomChance.randomChance(0)))
+								.add(ItemLootEntry.lootTableItem(GPBlocks.GOLDEN_PACMAN_TROPHY.get())
+										.when(KilledByPlayer.killedByPlayer())
+										.when(RandomChance.randomChance(0)))));
 	}
 
 	@Override
