@@ -3,6 +3,10 @@
   "values": [
     "giantpacman:pacman_trophy",
     "giantpacman:golden_pacman_trophy",
+    "giantpacman:random_items_drop_tooltip",
+    "giantpacman:pacman_icon",
+    "giantpacman:vulnerable_ghost_icon",
+    "giantpacman:flashing_vulnerable_ghost_icon",
     "minecraft:bedrock",
     "minecraft:end_portal_frame",
     "minecraft:barrier",

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_icon"
+    },
+    "title": {
+      "translate": "advancements.giantpacman.root.title"
+    },
+    "description": {
+      "translate": "advancements.giantpacman.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "giantpacman:textures/gui/advancements/backgrounds/giant_pacman.png"
+  },
+  "criteria": {
+    "root": {
+      "trigger": "minecraft:location",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "parent": "giantpacman:root/root",
+  "display": {
+    "icon": {
+      "item": "giantpacman:inky"
+    },
+    "title": {
+      "translate": "advancements.giantpacman.phasmophobia.title"
+    },
+    "description": {
+      "translate": "advancements.giantpacman.phasmophobia.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "giantpacman:textures/gui/advancements/backgrounds/giant_pacman.png"
+  },
+  "criteria": {
+    "phasmophobia_blinky": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:blinky"
+        }
+      }
+    },
+    "phasmophobia_pinky": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:pinky"
+        }
+      }
+    },
+    "phasmophobia_inky": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:inky"
+        }
+      }
+    },
+    "phasmophobia_clyde": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:clyde"
+        }
+      }
+    },
+    "phasmophobia_sue": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:sue"
+        }
+      }
+    },
+    "phasmophobia_tim": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:tim"
+        }
+      }
+    },
+    "phasmophobia_funky": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:funky"
+        }
+      }
+    },
+    "phasmophobia_spunky": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:spunky"
+        }
+      }
+    },
+    "phasmophobia_orson": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "giantpacman:orson"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "phasmophobia_blinky",
+      "phasmophobia_pinky",
+      "phasmophobia_inky",
+      "phasmophobia_clyde",
+      "phasmophobia_sue",
+      "phasmophobia_tim",
+      "phasmophobia_funky",
+      "phasmophobia_spunky",
+      "phasmophobia_orson"
+    ]
+  ]
+}

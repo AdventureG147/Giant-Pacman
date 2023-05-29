@@ -1,0 +1,36 @@
+{
+  "parent": "giantpacman:root/root",
+  "display": {
+    "icon": {
+      "item": "giantpacman:pacman_trophy"
+    },
+    "title": {
+      "translate": "advancements.giantpacman.pacman_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.giantpacman.pacman_trophy.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "giantpacman:textures/gui/advancements/backgrounds/giant_pacman.png"
+  },
+  "criteria": {
+    "pacman_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "giantpacman:pacman_trophy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pacman_trophy"
+    ]
+  ]
+}

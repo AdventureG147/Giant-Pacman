@@ -33,4 +33,10 @@ public class GPItems {
 
 	// Thank You Blackout!
 	public static final RegistryObject<ThankYouBlackoutItem> THANK_YOU_BLACKOUT = ITEMS.register("thank_you_blackout", () -> new ThankYouBlackoutItem(new Item.Properties().rarity(Rarity.EPIC).tab(GPItemGroup.PACMAN_GROUP)));
+
+	// Development Items
+	public static final RegistryObject<Item> RANDOM_ITEMS_DROP_TOOLTIP = ITEMS.register("random_items_drop_tooltip", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> PACMAN_ICON = ITEMS.register("pacman_icon", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> VULNERABLE_GHOST_ICON = ITEMS.register("vulnerable_ghost_icon", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> FLASHING_VULNERABLE_GHOST_ICON = ITEMS.register("flashing_vulnerable_ghost_icon", () -> new Item(new Item.Properties()));
 }

@@ -30,7 +30,7 @@ public class GPLootTableProvider extends LootTableProvider {
 
 	@Override
 	protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
-		return ImmutableList.of(Pair.of(GPEntityLootTables::new, LootParameterSets.ENTITY));
+		return ImmutableList.of(Pair.of(GPBlockLootTables::new, LootParameterSets.BLOCK), Pair.of(GPEntityLootTables::new, LootParameterSets.ENTITY));
 	}
 
 	@Override

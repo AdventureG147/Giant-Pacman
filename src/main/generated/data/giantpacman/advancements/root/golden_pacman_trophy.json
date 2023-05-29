@@ -1,0 +1,36 @@
+{
+  "parent": "giantpacman:root/pacman_trophy",
+  "display": {
+    "icon": {
+      "item": "giantpacman:golden_pacman_trophy"
+    },
+    "title": {
+      "translate": "advancements.giantpacman.golden_pacman_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.giantpacman.golden_pacman_trophy.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "giantpacman:textures/gui/advancements/backgrounds/giant_pacman.png"
+  },
+  "criteria": {
+    "golden_pacman_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "giantpacman:golden_pacman_trophy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "golden_pacman_trophy"
+    ]
+  ]
+}
