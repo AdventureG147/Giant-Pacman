@@ -20,6 +20,10 @@
     "minecraft:debug_stick",
     "minecraft:command_block_minecart",
     "minecraft:written_book",
-    "minecraft:enchanted_book"
+    "minecraft:enchanted_book",
+    {
+      "id": "theoneprobe:creativeprobe",
+      "required": false
+    }
   ]
 }

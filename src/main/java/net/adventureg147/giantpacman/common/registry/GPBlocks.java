@@ -21,6 +21,8 @@ public class GPBlocks {
 	public static final RegistryObject<Block> PACMAN_TROPHY = registerBlock("pacman_trophy", () -> new TrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
 	public static final RegistryObject<Block> GOLDEN_PACMAN_TROPHY = registerBlock("golden_pacman_trophy", () -> new GoldenTrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
 
+	//public static final RegistryObject<Block> DIAMOND_PACMAN_TROPHY = registerBlock("pacman_trophy", () -> new TrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
+
 	public static <B extends Block> RegistryObject<B> registerBlock(String name, Supplier<? extends B> supplier, ItemGroup itemGroup) {
 		RegistryObject<B> block = BLOCKS.register(name, supplier);
 		ITEM_BLOCKS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(itemGroup)));

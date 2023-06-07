@@ -23,4 +23,4 @@ bba6b1f51afb304eeb2371f2d210ded83719c03b data/giantpacman/advancements/root/phas
 f606222b2268bb0e4fc5e90ea24cc78ef66dcccd data/giantpacman/loot_tables/blocks/golden_pacman_trophy.json
 7499143fb2e1948e48bed4d4475a45e90d6e32b3 data/giantpacman/loot_tables/blocks/pacman_trophy.json
 e7c465e3b91f240c0da05992e44b88779e8fdb90 data/giantpacman/loot_tables/entities/giant_pacman.json
-6511b48295a64b4a863af38f9ec16d175685dfa3 data/giantpacman/tags/items/undroppable.json
+e985077a472df86b589a79e9035249c7ce1282cd data/giantpacman/tags/items/undroppable.json
