@@ -14,5 +14,7 @@ public class ClientSetupEvent {
 
 		RenderTypeLookup.setRenderLayer(GPBlocks.PACMAN_TROPHY.get(), RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(GPBlocks.GOLDEN_PACMAN_TROPHY.get(), RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(GPBlocks.DIAMOND_PACMAN_TROPHY.get(), RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(GPBlocks.STONE_PACMAN_STATUE.get(), RenderType.cutout());
 	}
 }

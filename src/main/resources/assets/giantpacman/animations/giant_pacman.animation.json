@@ -3,25 +3,19 @@
 	"animations": {
 		"animation.giant_pacman.chomp": {
 			"loop": true,
-			"animation_length": 1.04167,
+			"animation_length": 0.56,
 			"bones": {
 				"bottom": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
-						"0.5": {
-							"vector": [-25, 0, 0]
+						"0.24": {
+							"vector": [-45, 0, 0]
 						},
-						"1.0": {
+						"0.48": {
 							"vector": [0, 0, 0]
 						}
-					},
-					"position": {
-						"vector": [0, -2, 0]
-					},
-					"scale": {
-						"vector": [1, 0.9, 0.9]
 					}
 				},
 				"top": {
@@ -29,42 +23,25 @@
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
-						"0.5": {
-							"vector": [-25, 0, 0]
+						"0.24": {
+							"vector": [45, 0, 0]
 						},
-						"1.0": {
+						"0.48": {
 							"vector": [0, 0, 0]
 						}
-					},
-					"position": {
-						"vector": [0, -2, 0]
-					},
-					"scale": {
-						"vector": [1, 1, 0.9]
 					}
 				},
-				"tounge": {
+				"tongue": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
-						"0.5": {
+						"0.24": {
 							"vector": [15, 0, 0]
 						},
-						"1.0": {
-							"vector": [0, 0, 0]
+						"0.48": {
+							"vector": [15, 0, 0]
 						}
-					}
-				},
-				"Pacman": {
-					"rotation": {
-						"vector": [0, 0, 0]
-					},
-					"position": {
-						"vector": [0, 0, -5]
-					},
-					"scale": {
-						"vector": [2.2, 2.4, 2.5]
 					}
 				}
 			}

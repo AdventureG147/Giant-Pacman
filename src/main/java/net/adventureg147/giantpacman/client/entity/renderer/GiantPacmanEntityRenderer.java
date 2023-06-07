@@ -15,7 +15,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class GiantPacmanEntityRenderer extends GeoEntityRenderer<GiantPacmanEntity> {
 	public GiantPacmanEntityRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new GiantPacmanEntityModel());
-		this.shadowRadius = 4.0F;
+		this.shadowRadius = 4.5F;
 	}
 
 	@Override

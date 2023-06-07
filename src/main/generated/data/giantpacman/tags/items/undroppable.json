@@ -2,7 +2,9 @@
   "replace": false,
   "values": [
     "giantpacman:pacman_trophy",
+    "giantpacman:stone_pacman_statue",
     "giantpacman:golden_pacman_trophy",
+    "giantpacman:diamond_pacman_trophy",
     "giantpacman:random_items_drop_tooltip",
     "giantpacman:pacman_icon",
     "giantpacman:vulnerable_ghost_icon",

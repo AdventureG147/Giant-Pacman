@@ -14,7 +14,9 @@ public class GPBlockLootTables extends BlockLootTables {
 	protected void addTables() {
 		// Trophies
 		dropSelf(GPBlocks.PACMAN_TROPHY.get());
+		dropSelf(GPBlocks.STONE_PACMAN_STATUE.get());
 		dropSelf(GPBlocks.GOLDEN_PACMAN_TROPHY.get());
+		dropSelf(GPBlocks.DIAMOND_PACMAN_TROPHY.get());
 	}
 
 	@Override

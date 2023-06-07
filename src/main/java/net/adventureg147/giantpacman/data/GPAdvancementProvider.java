@@ -77,18 +77,20 @@ public class GPAdvancementProvider extends AdvancementProvider {
 		this.register(consumer);
 	}
 
-	@SuppressWarnings({ "unused" })
 	public void register(Consumer<Advancement> t) {
 		Advancement root = registerAdvancement("root", FrameType.TASK, GPItems.PACMAN_ICON.get())
 				.addCriterion("root", PositionTrigger.Instance.located(LocationPredicate.ANY))
 				.save(t, advancementId("root"));
 
-		Advancement pacmanTrophy = registerAdvancement("pacman_trophy", FrameType.GOAL, GPBlocks.PACMAN_TROPHY.get()).parent(root)
+		Advancement pacmanTrophy = registerAdvancement("pacman_trophy", FrameType.TASK, GPBlocks.PACMAN_TROPHY.get()).parent(root)
 				.addCriterion("pacman_trophy", InventoryChangeTrigger.Instance.hasItems(GPBlocks.PACMAN_TROPHY.get()))
 				.save(t, advancementId("pacman_trophy"));
-		Advancement goldenPacmanTrophy = registerAdvancement("golden_pacman_trophy", FrameType.CHALLENGE, GPBlocks.GOLDEN_PACMAN_TROPHY.get()).parent(pacmanTrophy)
+		Advancement goldenPacmanTrophy = registerAdvancement("golden_pacman_trophy", FrameType.GOAL, GPBlocks.GOLDEN_PACMAN_TROPHY.get()).parent(pacmanTrophy)
 				.addCriterion("golden_pacman_trophy", InventoryChangeTrigger.Instance.hasItems(GPBlocks.GOLDEN_PACMAN_TROPHY.get()))
 				.save(t, advancementId("golden_pacman_trophy"));
+		Advancement diamondPacmanTrophy = registerAdvancement("diamond_pacman_trophy", FrameType.CHALLENGE, GPBlocks.DIAMOND_PACMAN_TROPHY.get()).parent(goldenPacmanTrophy)
+				.addCriterion("diamond_pacman_trophy", InventoryChangeTrigger.Instance.hasItems(GPBlocks.DIAMOND_PACMAN_TROPHY.get()))
+				.save(t, advancementId("diamond_pacman_trophy"));
 
 		Advancement levelCompleted = registerAdvancement("level_completed", FrameType.GOAL, GPItems.VULNERABLE_GHOST_ICON.get()).parent(root)
 				.addCriterion("impossible", new ImpossibleTrigger.Instance())

@@ -24,9 +24,12 @@
 
 	"block.giantpacman.pacman_trophy": "Pacman Trophy",
 	"block.giantpacman.golden_pacman_trophy": "Golden Pacman Trophy",
+	"block.giantpacman.diamond_pacman_trophy": "Diamond Pacman Trophy",
+	"block.giantpacman.stone_pacman_statue": "Stone Pacman Statue",
 
-	"tooltip.giantpacman.pacman_trophy": "Dropped on 10th kill of a Giant Pacman.",
-	"tooltip.giantpacman.golden_pacman_trophy": "Dropped on 100th kill of a Giant Pacman.",
+	"tooltip.giantpacman.pacman_trophy": "Dropped on the 10th kill of a Giant Pacman.",
+	"tooltip.giantpacman.golden_pacman_trophy": "Dropped on the 100th kill of a Giant Pacman.",
+	"tooltip.giantpacman.diamond_pacman_trophy": "Dropped on the 255th kill of a Giant Pacman.",
 	"tooltip.giantpacman.random_items_drop_tooltip": "Drops 10 random items.",
 	"tooltip.giantpacman.pacman_icon": "Item only used for Advancement Icons.",
 	"tooltip.giantpacman.vulnerable_ghost_icon": "Item only used for Advancement Icons.",
@@ -42,6 +45,8 @@
 	"advancements.giantpacman.pacman_trophy.description": "Obtain the Pacman Trophy.",
 	"advancements.giantpacman.golden_pacman_trophy.title": "A Golden Trophy!",
 	"advancements.giantpacman.golden_pacman_trophy.description": "Obtain the Golden Pacman Trophy.",
+	"advancements.giantpacman.diamond_pacman_trophy.title": "A Diamond Trophy!",
+	"advancements.giantpacman.diamond_pacman_trophy.description": "Obtain the Diamond Pacman Trophy.",
 	"advancements.giantpacman.level_completed.title": "Level Complete!",
 	"advancements.giantpacman.level_completed.description": "Defeat Pacman. Be Careful, He Bites.",
 	"advancements.giantpacman.game_over.title": "Game Over!",

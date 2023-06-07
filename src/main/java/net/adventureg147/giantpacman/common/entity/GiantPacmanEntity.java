@@ -22,8 +22,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.Path;
-import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.stats.ServerStatisticsManager;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
@@ -47,12 +45,9 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	private final AnimationFactory factory = new AnimationFactory(this);
@@ -64,10 +59,10 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 100.0D)
-				.add(Attributes.ATTACK_SPEED, 1)
+				.add(Attributes.ATTACK_SPEED, 1.15)
 				.add(Attributes.ARMOR, 10D)
 				.add(Attributes.MOVEMENT_SPEED, 0.25D)
-				.add(Attributes.ATTACK_DAMAGE, 10.0D)
+				.add(Attributes.ATTACK_DAMAGE, 20.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 64.0D);
 	}
@@ -159,6 +154,11 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 				if (getKillCount((ServerPlayerEntity) player, this.getType()) == 100) {
 					ItemStack golden_trophy = new ItemStack(GPBlocks.GOLDEN_PACMAN_TROPHY.get());
 					this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), golden_trophy));
+				}
+
+				if (getKillCount((ServerPlayerEntity) player, this.getType()) == 255) {
+					ItemStack diamond_trophy = new ItemStack(GPBlocks.DIAMOND_PACMAN_TROPHY.get());
+					this.level.addFreshEntity(new ItemEntity(this.level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), diamond_trophy));
 				}
 
 				for (int i = 0; i < 10; i++) {

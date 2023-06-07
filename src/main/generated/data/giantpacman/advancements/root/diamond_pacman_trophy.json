@@ -1,28 +1,28 @@
 {
-  "parent": "giantpacman:root/root",
+  "parent": "giantpacman:root/golden_pacman_trophy",
   "display": {
     "icon": {
-      "item": "giantpacman:pacman_trophy"
+      "item": "giantpacman:diamond_pacman_trophy"
     },
     "title": {
-      "translate": "advancements.giantpacman.pacman_trophy.title"
+      "translate": "advancements.giantpacman.diamond_pacman_trophy.title"
     },
     "description": {
-      "translate": "advancements.giantpacman.pacman_trophy.description"
+      "translate": "advancements.giantpacman.diamond_pacman_trophy.description"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false,
     "background": "giantpacman:textures/gui/advancements/backgrounds/giant_pacman.png"
   },
   "criteria": {
-    "pacman_trophy": {
+    "diamond_pacman_trophy": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "giantpacman:pacman_trophy"
+            "item": "giantpacman:diamond_pacman_trophy"
           }
         ]
       }
@@ -30,7 +30,7 @@
   },
   "requirements": [
     [
-      "pacman_trophy"
+      "diamond_pacman_trophy"
     ]
   ]
 }

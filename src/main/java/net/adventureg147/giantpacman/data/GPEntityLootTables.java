@@ -67,6 +67,9 @@ public class GPEntityLootTables extends EntityLootTables {
 										.when(RandomChance.randomChance(0)))
 								.add(ItemLootEntry.lootTableItem(GPBlocks.GOLDEN_PACMAN_TROPHY.get())
 										.when(KilledByPlayer.killedByPlayer())
+										.when(RandomChance.randomChance(0)))
+								.add(ItemLootEntry.lootTableItem(GPBlocks.DIAMOND_PACMAN_TROPHY.get())
+										.when(KilledByPlayer.killedByPlayer())
 										.when(RandomChance.randomChance(0)))));
 	}
 
