@@ -1,7 +1,9 @@
 package net.adventureg147.giantpacman.common.registry;
 
 import net.adventureg147.giantpacman.GiantPacman;
+import net.adventureg147.giantpacman.common.block.DiamondTrophyBlock;
 import net.adventureg147.giantpacman.common.block.GoldenTrophyBlock;
+import net.adventureg147.giantpacman.common.block.StoneStatueBlock;
 import net.adventureg147.giantpacman.common.block.TrophyBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -20,8 +22,8 @@ public class GPBlocks {
 
 	public static final RegistryObject<Block> PACMAN_TROPHY = registerBlock("pacman_trophy", () -> new TrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
 	public static final RegistryObject<Block> GOLDEN_PACMAN_TROPHY = registerBlock("golden_pacman_trophy", () -> new GoldenTrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
-
-	//public static final RegistryObject<Block> DIAMOND_PACMAN_TROPHY = registerBlock("pacman_trophy", () -> new TrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
+	public static final RegistryObject<Block> DIAMOND_PACMAN_TROPHY = registerBlock("diamond_pacman_trophy", () -> new DiamondTrophyBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
+	public static final RegistryObject<Block> STONE_PACMAN_STATUE = registerBlock("stone_pacman_statue", () -> new StoneStatueBlock(AbstractBlock.Properties.of(Material.DECORATION).noOcclusion()), GPItemGroup.PACMAN_GROUP);
 
 	public static <B extends Block> RegistryObject<B> registerBlock(String name, Supplier<? extends B> supplier, ItemGroup itemGroup) {
 		RegistryObject<B> block = BLOCKS.register(name, supplier);

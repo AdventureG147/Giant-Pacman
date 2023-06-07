@@ -14,6 +14,6 @@ public class GPEntityTypes {
 
 	public static final RegistryObject<EntityType<GiantPacmanEntity>> GIANT_PACMAN = ENTITY_TYPES.register("giant_pacman",
 			() -> EntityType.Builder.of(GiantPacmanEntity::new, EntityClassification.MONSTER)
-					.sized(6f, 6f)
+					.sized(8f, 10f)
 					.build(new ResourceLocation(GiantPacman.MODID, "giant_pacman").toString()));
 }

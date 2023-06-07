@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "giantpacman:block/stone_pacman_statue",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "giantpacman:block/stone_pacman_statue"
+    },
+    "facing=south": {
+      "model": "giantpacman:block/stone_pacman_statue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "giantpacman:block/stone_pacman_statue",
+      "y": 270
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 {
 	"parent": "giantpacman:block/base_trophy",
 	"textures": {
-		"texture": "giantpacman:block/trophy"
+		"texture": "giantpacman:block/diamond_trophy"
 	}
 }
