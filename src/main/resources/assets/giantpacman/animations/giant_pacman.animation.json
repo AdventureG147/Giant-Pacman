@@ -3,45 +3,36 @@
 	"animations": {
 		"animation.giant_pacman.chomp": {
 			"loop": true,
-			"animation_length": 0.56,
+			"animation_length": 0.4,
 			"bones": {
 				"bottom": {
+					"relative_to": {
+						"rotation": "entity"
+					},
 					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.24": {
-							"vector": [-45, 0, 0]
-						},
-						"0.48": {
-							"vector": [0, 0, 0]
-						}
+						"0.0": [0, 0, 0.01],
+						"0.2": [45, 0, 0],
+						"0.4": [0, 0, 0.01]
 					}
 				},
 				"top": {
+					"relative_to": {
+						"rotation": "entity"
+					},
 					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.24": {
-							"vector": [45, 0, 0]
-						},
-						"0.48": {
-							"vector": [0, 0, 0]
-						}
+						"0.0": [0, 0, 0.01],
+						"0.2": [-45, 0, 0],
+						"0.4": [0, 0, 0.01]
 					}
 				},
 				"tongue": {
+					"relative_to": {
+						"rotation": "entity"
+					},
 					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.24": {
-							"vector": [15, 0, 0]
-						},
-						"0.48": {
-							"vector": [15, 0, 0]
-						}
+						"0.0": [0, 0, 0.01],
+						"0.2": [-5, 0, 0],
+						"0.4": [15, 0, 0]
 					}
 				}
 			}
