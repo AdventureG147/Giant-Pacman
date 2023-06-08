@@ -59,9 +59,9 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 100.0D)
-				.add(Attributes.ATTACK_SPEED, 1.15)
+				.add(Attributes.ATTACK_SPEED, 1.25)
 				.add(Attributes.ARMOR, 10D)
-				.add(Attributes.MOVEMENT_SPEED, 0.25D)
+				.add(Attributes.MOVEMENT_SPEED, 0.35D)
 				.add(Attributes.ATTACK_DAMAGE, 20.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 64.0D);
@@ -101,6 +101,11 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	@Override
 	protected int getExperienceReward(PlayerEntity pPlayer) {
 		return 10000;
+	}
+
+	@Override
+	public boolean causeFallDamage(float pFallDistance, float pDamageMultiplier) {
+		return false;
 	}
 
 	@Override
