@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.common.entity;
 
 import net.adventureg147.giantpacman.GiantPacman;
@@ -75,7 +80,6 @@ public class GiantPacmanEntity extends MonsterEntity implements IAnimatable {
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new GiantPacmanAttackGoal(this, 1.15D, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PigEntity.class, true));

@@ -1,10 +1,12 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.common.registry;
 
 import net.adventureg147.giantpacman.GiantPacman;
-import net.adventureg147.giantpacman.common.block.DiamondTrophyBlock;
-import net.adventureg147.giantpacman.common.block.GoldenTrophyBlock;
-import net.adventureg147.giantpacman.common.block.StoneStatueBlock;
-import net.adventureg147.giantpacman.common.block.TrophyBlock;
+import net.adventureg147.giantpacman.common.block.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

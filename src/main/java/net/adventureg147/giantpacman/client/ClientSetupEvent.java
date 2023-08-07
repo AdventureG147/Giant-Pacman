@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.client;
 
 import net.adventureg147.giantpacman.client.entity.renderer.GiantPacmanEntityRenderer;

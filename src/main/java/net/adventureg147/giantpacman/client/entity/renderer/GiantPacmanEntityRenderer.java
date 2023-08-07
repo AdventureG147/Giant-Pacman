@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.client.entity.renderer;
 
 import com.mojang.blaze3d.matrix.MatrixStack;

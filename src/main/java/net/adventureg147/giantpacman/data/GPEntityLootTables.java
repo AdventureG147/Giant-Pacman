@@ -16,7 +16,10 @@ import net.minecraft.loot.conditions.RandomChance;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashSet;
 import java.util.Set;
-
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
 public class GPEntityLootTables extends EntityLootTables {
 	private final Set<EntityType<?>> knownEntities = new HashSet<>();
 

@@ -14,7 +14,10 @@ import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
-
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
 public class GPItemModelProvider extends ItemModelProvider {
 	public GPItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
 		super(generator, GiantPacman.MODID, existingFileHelper);

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.common.worldgen;
 
 import net.adventureg147.giantpacman.common.registry.GPEntityTypes;

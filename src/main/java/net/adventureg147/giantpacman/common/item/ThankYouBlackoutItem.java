@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.common.item;
 
 import net.minecraft.client.util.ITooltipFlag;

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) AdventureG147 and contributors
+ * All Rights Reserved
+ */
+
 package net.adventureg147.giantpacman.common.registry;
 
 import net.adventureg147.giantpacman.GiantPacman;
@@ -39,4 +44,5 @@ public class GPItems {
 	public static final RegistryObject<Item> PACMAN_ICON = ITEMS.register("pacman_icon", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> VULNERABLE_GHOST_ICON = ITEMS.register("vulnerable_ghost_icon", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> FLASHING_VULNERABLE_GHOST_ICON = ITEMS.register("flashing_vulnerable_ghost_icon", () -> new Item(new Item.Properties()));
+
 }
