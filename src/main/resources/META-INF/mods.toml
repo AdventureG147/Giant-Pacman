@@ -11,7 +11,7 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/giant-pacman"
 logoFile="logo.png"
 credits="AdventureG147, Blackout"
 authors="AdventureG147 - Creator"
-description='''This is NOT the official port to Killer Pacman. This mod was only inspired by it, and I use my own assets.'''
+description='''Giant Pacman is a mod that aims to add Pacman, trophies and much more!'''
 
 [[dependencies.giantpacman]]
 modId="forge"
